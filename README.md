@@ -4,7 +4,7 @@
 
 ## Team
 
-  - teamMember
+  - Katherine Fickel
   - teamMember
   - teamMember
   - teamMember
@@ -45,7 +45,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/document/d/1OO5z6kTTVBHrAS6XR9YJxTN1Wtyx_mXapDGT4LDZgmw/edit)
 
 
 ## Contributing
