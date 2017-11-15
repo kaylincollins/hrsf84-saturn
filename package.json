@@ -9,7 +9,9 @@
     "start": "node server/index.js"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^4.13.2",
+    "react": "^16.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
@@ -18,7 +20,8 @@
     "chai": "^4.1.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "mocha": "^4.0.1",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "webpack": "^3.8.1"
   },
   "babel": {
     "presets": [
