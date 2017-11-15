@@ -5,7 +5,7 @@
 ## Team
 
   - Katherine Fickel
-  - teamMember
+  - Kaylin Collins
   - teamMember
   - teamMember
 
