@@ -5,9 +5,7 @@
 ## Team
 
   - Katherine Fickel
-  - teamMember
-  - teamMember
-  - teamMember
+  - Dustin Huang
 
 ## Table of Contents
 
