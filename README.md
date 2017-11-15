@@ -6,6 +6,7 @@
 
   - Katherine Fickel
   - Dustin Huang
+  - Kaylin Collins
 
 ## Table of Contents
 
