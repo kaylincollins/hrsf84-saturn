@@ -7,8 +7,6 @@
   - Katherine Fickel
   - Dustin Huang
   - Kaylin Collins
-  - teamMember
-  - teamMember
 
 ## Table of Contents
 
