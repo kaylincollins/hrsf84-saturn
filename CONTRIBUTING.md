@@ -1,5 +1,5 @@
 # Contributing
-## What to Install
+## What to Install/Use
   -npm install
   -start the server using npm start
   -run tests using npm test
