@@ -1,4 +1,11 @@
 # Contributing
+## What to Install/Use
+  -npm install
+  -start the server using npm start
+  -run tests using npm test
+  -API keys are saved in PROCESS.ENV variables
+  -DB connection is through PROCESS.ENV 
+
 
 ## General Workflow
 
@@ -17,7 +24,7 @@
 Use github’s interface to make a fork of the repo, then add that repo as an upstream remote:
 
 ```
-git remote add upstream https://github.com/organization/<NAME_OF_REPO>.git
+git remote add upstream https://github.com/hrsf84-saturn/hrsf84-saturn.git
 ```
 
 ### Cut a namespaced feature branch from master
