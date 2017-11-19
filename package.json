@@ -11,6 +11,7 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d -w",
+    "postinstall": "webpack -d -w",
     "start": "node server/index.js"
   },
   "dependencies": {
