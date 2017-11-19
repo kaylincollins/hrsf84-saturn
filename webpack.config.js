@@ -3,12 +3,12 @@ module.exports = {
 
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/client/public'
+    path: `${__dirname}/client/public`,
   },
 
   devServer: {
     inline: true,
-    port: 3000
+    port: 3000,
   },
 
   module: {
@@ -16,8 +16,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader?presets[]=es2015&presets[]=react'
-      }
-    ]
-  }
-}
+        loader: 'babel-loader?presets[]=es2015&presets[]=react',
+      },
+    ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
