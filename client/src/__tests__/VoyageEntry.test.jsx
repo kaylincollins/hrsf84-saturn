@@ -31,10 +31,8 @@ describe('VoyageEntry', () => {
     const removeEntry = jest.fn();
     const wrapper = shallow(<VoyageEntry entry={{}} removeEntry={removeEntry} />);
 
-    // expect(count).toEqual(0);
     expect(removeEntry).not.toHaveBeenCalled();
     wrapper.find('span').first().simulate('click');
-    // expect(count).toEqual(1);
     expect(removeEntry).toHaveBeenCalled();
   });
 });
