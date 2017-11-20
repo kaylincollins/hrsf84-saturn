@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
 import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
+import HomePage from './Homepage';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,10 +11,25 @@ class App extends React.Component {
     this.state = {
       photos: sampleData.businesses,
       voyage: [],
+      city: '',
     };
 
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  handleCityChange(changeCity) {
+    console.log(' cc ', changeCity.target.value)
+    this.setState({
+      city: changeCity.target.value,
+    })
+  }
+
+  search(city) {
+    console.log('S ', city);
+
   }
 
   handlePhotoClick(index) {
@@ -33,6 +48,7 @@ class App extends React.Component {
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
+        <HomePage search={this.search} city={this.state.city} handleCityChange={this.handleCityChange} />
         <BrowserRouter>
           <Switch>
             <Route
