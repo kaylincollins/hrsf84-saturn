@@ -4,14 +4,16 @@ import PropTypes from 'prop-types';
 import PhotoPanel from './PhotoPanel';
 import VoyageView from './VoyageView';
 
-const SelectPage = ({
+function SelectPage({
   photos, voyage, handlePhotoClick, removeEntry,
-}) => (
-  <div id="select">
-    <PhotoPanel photos={photos} handlePhotoClick={handlePhotoClick} />
-    <VoyageView voyage={voyage} removeEntry={removeEntry} select />
-  </div>
-);
+}) {
+  return (
+    <div id="select">
+      <PhotoPanel photos={photos} handlePhotoClick={handlePhotoClick} />
+      <VoyageView voyage={voyage} removeEntry={removeEntry} select />
+    </div>
+  );
+}
 
 SelectPage.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
