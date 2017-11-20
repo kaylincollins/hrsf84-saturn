@@ -3,10 +3,6 @@ import { shallow, mount, render } from 'enzyme';
 import App from '../components/App';
 
 describe('App', () => {
-  test('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
-  });
-
   test('should render without throwing an error', () => {
     expect(shallow(<App />).contains(<img src="/images/logo.png" alt="logo" />)).toBe(true);
   });

@@ -11,13 +11,17 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d -w",
+    "postinstall": "webpack -d -w",
     "start": "node server/index.js"
   },
   "dependencies": {
     "express": "^4.16.2",
     "mongoose": "^4.13.2",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "react-masonry-component": "^6.0.1",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
