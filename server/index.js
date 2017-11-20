@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/Voyage');
+
 const app = express();
 
 app.use(express.static(`${__dirname}/../client/public`));
@@ -14,12 +15,16 @@ app.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/public/` });
 });
 
-app.get('/city', function(req, res) {
-
+app.get('/search/:city', function(req, res) {
+  let city = req.path.slice(7);
+  // console.log('request :)', req.path.slice(7));
+  res.send('here');
 })
 
 const port = process.env.PORT || 3000;
-const server = app.listen(port);
+const server = app.listen(port, () => {
+  console.log(`listenting on ${port}`)
+});
 
 module.exports = server;
 

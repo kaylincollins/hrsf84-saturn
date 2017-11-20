@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
+import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,14 +22,35 @@ class App extends React.Component {
   }
 
   handleCityChange(changeCity) {
-    console.log(' cc ', changeCity.target.value)
     this.setState({
       city: changeCity.target.value,
     })
   }
 
   search(city) {
+    // var init = {
+    //   method: "GET",
+    //   body: city
+    // }
     console.log('S ', city);
+    $.ajax({
+      method: 'POST',
+      url: `/search`,
+      data: city,
+      success: function(cities) {
+        console.log('SUCCESS', cities);
+      },
+      error: function(err) {
+        console.log('ERROR ', err);
+      }
+    })
+    // fetch(`/search/${city}`)
+    // .then(response => {
+    //   console.log('response HERE', response);
+    //   response.json().then(function(photos) {
+    //     console.log('P ', photos)
+    //   })
+    // })
 
   }
 
