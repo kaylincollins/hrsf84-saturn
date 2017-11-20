@@ -34,9 +34,9 @@ class App extends React.Component {
     // }
     console.log('S ', city);
     $.ajax({
-      method: 'POST',
-      url: `/search`,
-      data: city,
+      type: 'POST',
+      url: '/search',
+      data: {'search': city},
       success: function(cities) {
         console.log('SUCCESS', cities);
       },

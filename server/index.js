@@ -4,6 +4,9 @@ const db = require('../database/Voyage');
 
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(express.static(`${__dirname}/../client/public`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,10 +18,9 @@ app.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/public/` });
 });
 
-app.get('/search/:city', function(req, res) {
-  let city = req.path.slice(7);
-  // console.log('request :)', req.path.slice(7));
-  res.send('here');
+app.post('/search', function(req, res) {
+  console.log('request :)', req.body.search);
+  res.send(req.body);
 })
 
 const port = process.env.PORT || 3000;
