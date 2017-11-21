@@ -22,36 +22,25 @@ class App extends React.Component {
   }
 
   handleCityChange(changeCity) {
-    this.setState({
-      city: changeCity.target.value,
-    })
+    this.setState({ 
+      city: changeCity.target.value
+    });
   }
 
   search(city) {
-    // var init = {
-    //   method: "GET",
-    //   body: city
-    // }
-    console.log('S ', city);
     $.ajax({
       type: 'POST',
       url: '/search',
       data: {'search': city},
-      success: function(cities) {
-        console.log('SUCCESS', cities);
+      success: (cityInfo) => {
+        this.setState({
+          city: cityInfo
+        })
       },
-      error: function(err) {
+      error: (err) => {
         console.log('ERROR ', err);
       }
     })
-    // fetch(`/search/${city}`)
-    // .then(response => {
-    //   console.log('response HERE', response);
-    //   response.json().then(function(photos) {
-    //     console.log('P ', photos)
-    //   })
-    // })
-
   }
 
   handlePhotoClick(index) {
@@ -70,9 +59,18 @@ class App extends React.Component {
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
-        <HomePage search={this.search} city={this.state.city} handleCityChange={this.handleCityChange} />
         <BrowserRouter>
           <Switch>
+            <Route
+              exact path="/"
+              render={() => {
+                <HomePage 
+                  search={this.search} 
+                  city={this.state.city} 
+                  handleCityChange={this.handleCityChange} 
+                />
+              }}
+            />
             <Route
               path="/select"
               render={() => (
