@@ -3,6 +3,10 @@ import { shallow, mount, render } from 'enzyme';
 import App from '../components/App';
 
 describe('App', () => {
+  test('should be a stateful class component', () => {
+    expect(App.prototype).toBeInstanceOf(React.Component);
+  });
+
   test('should render without throwing an error', () => {
     expect(shallow(<App />).contains(<img src="/images/logo.png" alt="logo" />)).toBe(true);
   });

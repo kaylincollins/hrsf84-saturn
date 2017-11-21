@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import VoyageEntry from './VoyageEntry';
 
-function VoyageView({ voyage, removeEntry, select }) {
+function VoyageView({
+  voyage, removeEntry, saveVoyage, select,
+}) {
   return (
     <div id="voyage-view">
       <ul>
@@ -15,7 +17,7 @@ function VoyageView({ voyage, removeEntry, select }) {
           />
         ))}
       </ul>
-      {select ? <button id="save-voyage">Save Voyage</button> : ''}
+      {select ? <button id="save-voyage" onClick={saveVoyage}>Save Voyage</button> : ''}
     </div>
   );
 }
@@ -23,10 +25,12 @@ function VoyageView({ voyage, removeEntry, select }) {
 VoyageView.propTypes = {
   voyage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   removeEntry: PropTypes.func.isRequired,
+  saveVoyage: PropTypes.func,
   select: PropTypes.bool,
 };
 
 VoyageView.defaultProps = {
+  saveVoyage: () => {},
   select: false,
 };
 

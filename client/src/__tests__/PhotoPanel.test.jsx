@@ -16,6 +16,10 @@ describe('PhotoPanel', () => {
     div.remove();
   });
 
+  test('should be a stateless functional component', () => {
+    expect(PhotoPanel.prototype).not.toBeInstanceOf(React.Component);
+  });
+
   test('should be selectable by id "photo-panel"', () => {
     const wrapper = shallow(<PhotoPanel photos={[{}]} handlePhotoClick={() => {}} />);
 

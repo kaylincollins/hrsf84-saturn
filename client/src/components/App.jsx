@@ -12,11 +12,13 @@ class App extends React.Component {
     this.state = {
       photos: sampleData.businesses,
       voyage: [],
-      city: '',
+      city: 'San Francisco',
+      username: '',
     };
 
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
+    this.saveVoyage = this.saveVoyage.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.search = this.search.bind(this);
     this.setState = this.setState.bind(this);
@@ -55,6 +57,16 @@ class App extends React.Component {
     });
   }
 
+  saveVoyage() {
+    let { username } = this.state;
+    if (!this.state.username) {
+      username = prompt('Enter a username');
+      this.setState({ username });
+    }
+
+    $.post('/voyages', { username, location: this.state.city, list: this.state.voyage });
+  }
+
   render() {
     return (
       <div className="container">
@@ -76,6 +88,7 @@ class App extends React.Component {
                   voyage={this.state.voyage}
                   handlePhotoClick={this.handlePhotoClick}
                   removeEntry={this.removeEntry}
+                  saveVoyage={this.saveVoyage}
                 />
               )}
             />
