@@ -12,12 +12,14 @@
     "test": "jest",
     "react-dev": "webpack -d -w",
     "postinstall": "webpack -d -w",
-    "start": "node server/index.js"
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "jquery": "^3.2.1",
     "mongoose": "^4.13.2",
+    "nodemon": "^1.12.1",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",

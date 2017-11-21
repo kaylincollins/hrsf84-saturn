@@ -1,7 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/Voyage');
+const yelp = require('../yelp/yelp');
+
+
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(`${__dirname}/../client/public`));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,8 +20,16 @@ app.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/public/` });
 });
 
+app.post('/search', (req, res) => {
+  yelp(req.body.search, function(restaurants) {
+    res.send(restaurants);
+  })
+})
+
 const port = process.env.PORT || 3000;
-const server = app.listen(port);
+const server = app.listen(port, () => {
+  console.log(`listenting on ${port}`)
+});
 
 module.exports = server;
 
