@@ -19,6 +19,7 @@ class App extends React.Component {
     this.removeEntry = this.removeEntry.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.search = this.search.bind(this);
+    this.setState = this.setState.bind(this);
   }
 
   handleCityChange(changeCity) {
@@ -33,8 +34,9 @@ class App extends React.Component {
       url: '/search',
       data: {'search': city},
       success: (cityInfo) => {
+        console.log('CI ', cityInfo);
         this.setState({
-          city: cityInfo
+          photos: cityInfo
         })
       },
       error: (err) => {
@@ -59,18 +61,14 @@ class App extends React.Component {
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact path="/"
-              render={() => {
-                <HomePage 
+        <HomePage 
                   search={this.search} 
                   city={this.state.city} 
                   handleCityChange={this.handleCityChange} 
                 />
-              }}
-            />
+        <BrowserRouter>
+          <Switch>
+            
             <Route
               path="/select"
               render={() => (
@@ -90,3 +88,14 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*<Route
+              exact path="/"
+              render={() => {
+                <HomePage 
+                  search={this.search} 
+                  city={this.state.city} 
+                  handleCityChange={this.handleCityChange} 
+                />
+              }}
+            />*/

@@ -11,7 +11,7 @@ function HomePage(props) {
       </div>
       <br />
       <input type="text" placeholder="Enter a city here..." onChange={props.handleCityChange}/>
-      <button type="submit" value="Go!" onClick={() => {props.search(props.city)}}><Link to='/select'>Submit!</Link></button>
+      <input type="submit" value="Go!" onClick={() => {props.search(props.city)}} />
       <div>
       <br />
         <img src="http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1487701021/eiffel-tower-paris-france-EIFFEL0217.jpg?itok=m0MZOYjh"onClick={() => {props.search('Paris, France')}}/>
@@ -24,3 +24,4 @@ function HomePage(props) {
 
 export default HomePage;
 
+// <Link to='/select'>Submit!</Link></button>
