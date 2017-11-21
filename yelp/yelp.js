@@ -31,4 +31,3 @@ var yelp = function(city, cb) {
 }
 
 module.exports = yelp;
-
