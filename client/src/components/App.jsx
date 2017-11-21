@@ -34,9 +34,10 @@ class App extends React.Component {
       url: '/search',
       data: {'search': city},
       success: (cityInfo) => {
-        console.log('CI ', cityInfo);
         this.setState({
           photos: cityInfo
+        }, function() {
+          location.href = '/select';
         })
       },
       error: (err) => {
@@ -61,13 +62,18 @@ class App extends React.Component {
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
-        <HomePage 
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact path="/"
+              render={() => (
+                <HomePage 
                   search={this.search} 
                   city={this.state.city} 
                   handleCityChange={this.handleCityChange} 
                 />
-        <BrowserRouter>
-          <Switch>
+              )}
+            />
             <Route
               path="/select"
               render={() => (
@@ -87,14 +93,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-          /*<Route
-              exact path="/"
-              render={() => {
-                <HomePage 
-                  search={this.search} 
-                  city={this.state.city} 
-                  handleCityChange={this.handleCityChange} 
-                />
-              }}
-            />*/

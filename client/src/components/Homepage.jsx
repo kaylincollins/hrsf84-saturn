@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 function HomePage(props) {
   return (
@@ -23,5 +22,3 @@ function HomePage(props) {
 }
 
 export default HomePage;
-
-// <Link to='/select'>Submit!</Link></button>
