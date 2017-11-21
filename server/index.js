@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/Voyage');
+const yelp = require('../yelp/yelp');
+
 
 const app = express();
 
@@ -18,9 +20,10 @@ app.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/public/` });
 });
 
-app.post('/search', function(req, res) {
-  console.log('request :)', req.body.search);
-  res.send(req.body);
+app.post('/search', (req, res) => {
+  yelp(req.body.search, function(restaurants) {
+    res.send(restaurants);
+  })
 })
 
 const port = process.env.PORT || 3000;
