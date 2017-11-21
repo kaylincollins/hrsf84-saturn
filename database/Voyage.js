@@ -4,12 +4,11 @@ mongoose.Promise = global.Promise;
 
 const voyageSchema = new mongoose.Schema({
   id: String,
-  list: [{
-    photo_id: String,
-    image_url: String,
-    url: String,
-    display_address: Array,
-  }],
+  list: Array, 
+    // photo_id: String,
+    // image_url: String,
+    // url: String,
+    // display_address: Array,
   username: String,
   location: String
 });
