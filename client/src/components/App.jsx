@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
@@ -39,7 +40,7 @@ class App extends React.Component {
         this.setState({
           photos: cityInfo
         }, function() {
-          location.href = '/select';
+          this.props.history.push('/select');
         })
       },
       error: (err) => {
@@ -74,35 +75,40 @@ class App extends React.Component {
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact path="/"
-              render={() => (
-                <HomePage 
-                  search={this.search} 
-                  city={this.state.city} 
-                  handleCityChange={this.handleCityChange} 
-                />
-              )}
-            />
-            <Route
-              path="/select"
-              render={() => (
-                <SelectPage
-                  photos={this.state.photos}
-                  voyage={this.state.voyage}
-                  handlePhotoClick={this.handlePhotoClick}
-                  removeEntry={this.removeEntry}
-                  saveVoyage={this.saveVoyage}
-                />
-              )}
-            />
-          </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <HomePage
+                search={this.search}
+                city={this.state.city}
+                handleCityChange={this.handleCityChange}
+              />
+            )}
+          />
+          <Route
+            path="/select"
+            render={() => (
+              <SelectPage
+                photos={this.state.photos}
+                voyage={this.state.voyage}
+                handlePhotoClick={this.handlePhotoClick}
+                removeEntry={this.removeEntry}
+                saveVoyage={this.saveVoyage}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default withRouter(App);

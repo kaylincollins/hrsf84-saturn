@@ -1,25 +1,40 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { mount, render } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 import App from '../components/App';
 
 describe('App', () => {
   test('should be a stateful class component', () => {
-    expect(App.prototype).toBeInstanceOf(React.Component);
+    expect(App.WrappedComponent.prototype).toBeInstanceOf(React.Component);
   });
 
   test('should render without throwing an error', () => {
-    expect(shallow(<App />).contains(<img src="/images/logo.png" alt="logo" />)).toBe(true);
-  });
+    const wrapper = render((
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    ));
 
-  test('should be selectable by class "container"', () => {
-    expect(shallow(<App />).is('.container')).toBe(true);
+    expect(wrapper.html()).toContain('<img src="/images/logo.png" alt="logo">');
   });
 
   test('should mount in a full DOM', () => {
-    expect(mount(<App />).find('.container').length).toBe(1);
+    const wrapper = mount((
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    ));
+
+    expect(wrapper.find('.container').length).toBe(1);
   });
 
   test('should render to static HTML', () => {
-    expect(render(<App />).text()).toEqual('');
+    const wrapper = render((
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    ));
+
+    expect(wrapper.text()).toEqual('');
   });
 });
