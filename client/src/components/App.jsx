@@ -68,7 +68,6 @@ class App extends React.Component {
                 />
         <BrowserRouter>
           <Switch>
-            
             <Route
               path="/select"
               render={() => (
@@ -89,7 +88,7 @@ class App extends React.Component {
 
 export default App;
 
-/*<Route
+          /*<Route
               exact path="/"
               render={() => {
                 <HomePage 
