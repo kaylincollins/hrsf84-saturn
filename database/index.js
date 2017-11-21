@@ -1,3 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect(`mongodb://${process.env.SATURNDB}`);
+const mongoUri = `mongodb://${process.env.SATURNDB}`;
 
+const db = mongoose.connect(mongoUri);
+
+module.exports = db;
