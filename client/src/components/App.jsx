@@ -5,7 +5,6 @@ import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
 import $ from 'jquery';
-import gKey from '../../../config';
 
 class App extends React.Component {
   constructor(props) {
