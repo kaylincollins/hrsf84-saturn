@@ -1,5 +1,4 @@
 import React from 'react';
-import google from '../../../config';
 
 function HomePage(props) {
   return (
