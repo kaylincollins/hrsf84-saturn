@@ -1,7 +1,8 @@
 var token = require('../config');
 var db = require('../database/index');
 var request = require('request');
-var token = require('../config.js');
+var token;
+
 
 var yelp = function(city, cb) {
   var term = 'restaurants';
@@ -24,10 +25,23 @@ var yelp = function(city, cb) {
     request.get(attractionsOptions, function(err, response, body) {
       var attractions = JSON.parse(body).businesses;
       var cityPics = restaurants.concat(attractions);
-      console.log('R and T ', cityPics)
       cb(cityPics)
     })
   })
 }
 
-module.exports = yelp;
+var yelpToken = function(cb) {
+  var options = {
+    url: `https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}`,
+    headers: {
+      'Content-Type': "application/x-www-form-urlencoded",
+    },
+  }
+  request.post(options, function(err, response, body) {
+    token = JSON.parse(body).access_token;
+    cb('Got Token');
+  })
+}
+
+module.exports.yelp = yelp;
+module.exports.yelpToken = yelpToken;

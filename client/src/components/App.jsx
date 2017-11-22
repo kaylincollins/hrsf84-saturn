@@ -20,15 +20,22 @@ class App extends React.Component {
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
     this.saveVoyage = this.saveVoyage.bind(this);
-    this.handleCityChange = this.handleCityChange.bind(this);
     this.search = this.search.bind(this);
+    this.autocomplete = this.autocomplete.bind(this);
     this.setState = this.setState.bind(this);
   }
 
-  handleCityChange(changeCity) {
-    this.setState({ 
-      city: changeCity.target.value
-    });
+  componentDidMount() {
+    $.ajax({
+      type: 'POST',
+      url: '/',
+      success: (cityInfo) => {
+        console.log(cityInfo)
+      },
+      error: (err) => {
+        console.log('ERROR ', err);
+      }
+    })
   }
 
   search(city) {
@@ -47,6 +54,18 @@ class App extends React.Component {
         console.log('ERROR ', err);
       }
     })
+  }
+
+  autocomplete(changeCity) {
+    console.log('A ', changeCity.target.value);
+    this.setState({ 
+      city: changeCity.target.value
+    });
+    let autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('autocomplete')), {
+        type: ['(cities)']
+      }
+    )
   }
 
   handlePhotoClick(index) {
@@ -84,6 +103,8 @@ class App extends React.Component {
                 search={this.search}
                 city={this.state.city}
                 handleCityChange={this.handleCityChange}
+                autocomplete={this.autocomplete}
+                click={this.click}
               />
             )}
           />
@@ -112,3 +133,6 @@ App.propTypes = {
 };
 
 export default withRouter(App);
+
+// ' + google.google + '
+

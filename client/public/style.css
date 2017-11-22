@@ -80,3 +80,28 @@ button#save-voyage {
   height: 30px;
   background: lightBlue;
 }
+
+.homepage {
+  margin-top: 10%;
+}
+
+.homeImg {
+  position: relative;
+  width: 33.33%;
+  height: 250px;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.citysearch {
+  text-align: center;
+}
+
+input#autocomplete {
+  width: 50%;
+  height: 20px;
+  padding: 2px;
+  border-color: black;
+  border-width: 5px;
+}
+
