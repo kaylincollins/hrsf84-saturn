@@ -36,12 +36,14 @@ class VoyageEntry extends React.Component {
         onClick={this.toggleDetails}
         role="menuitem"
       >
-        <span onClick={this.props.removeEntry} role="button" tabIndex={0}>&#x2717;</span>
-        <img
-          src={this.props.entry.image_url}
-          alt={this.props.entry.name}
-          width={Math.floor(document.getElementById('app').clientWidth / 4) - 50}
-        />
+        <div className="voyage-image">
+          <span onClick={this.props.removeEntry} role="button" tabIndex={0}>&#x2717;</span>
+          <img
+            src={this.props.entry.image_url}
+            alt={this.props.entry.name}
+            width={Math.floor(document.getElementById('app').clientWidth / 4) - 50}
+          />
+        </div>
         {details}
       </li>
     );

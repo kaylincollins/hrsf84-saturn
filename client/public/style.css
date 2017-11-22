@@ -23,15 +23,16 @@ ul {
   margin: 0;
 }
 
-li {
-  position: relative;
+li.photo {
+  display: inline-block;
   padding: 0;
-  margin: 0;
+  margin-bottom: -3px;
 }
 
 img {
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 #select {
@@ -53,11 +54,16 @@ img {
   overflow-y: scroll;
 }
 
-li span {
+.voyage-image {
+  display: inline-block;
+  position: relative;
+}
+
+.voyage-image span {
   font-size: 20px;
   position: absolute;
   top: 5px;
-  right: 25px;
+  right: 10px;
   color: red;
   cursor: pointer;
   height: 20px;
