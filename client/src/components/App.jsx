@@ -5,7 +5,7 @@ import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
 import $ from 'jquery';
-import google from '../../../config';
+import gKey from '../../../config';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,20 +21,25 @@ class App extends React.Component {
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
     this.saveVoyage = this.saveVoyage.bind(this);
-    this.handleCityChange = this.handleCityChange.bind(this);
     this.search = this.search.bind(this);
     this.autocomplete = this.autocomplete.bind(this);
     this.setState = this.setState.bind(this);
   }
 
-  handleCityChange(changeCity) {
-    this.setState({ 
-      city: changeCity.target.value
-    });
+  componentDidMount() {
+    $.ajax({
+      type: 'POST',
+      url: '/',
+      success: (cityInfo) => {
+        console.log(cityInfo)
+      },
+      error: (err) => {
+        console.log('ERROR ', err);
+      }
+    })
   }
 
   search(city) {
-    console.log(this.state.google);
     $.ajax({
       type: 'POST',
       url: '/search',
@@ -52,11 +57,14 @@ class App extends React.Component {
     })
   }
 
-  autocomplete() {
-    console.log('https://maps.googleapis.com/maps/api/js?key=' + google.google + '&libraries=places');
+  autocomplete(changeCity) {
+    console.log('A ', changeCity.target.value);
+    this.setState({ 
+      city: changeCity.target.value
+    });
     let autocomplete = new google.maps.places.Autocomplete(
       (document.getElementById('autocomplete')), {
-        type: ['(cities']
+        type: ['(cities)']
       }
     )
   }
@@ -84,7 +92,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <script type="text/javascript" src={'https://maps.googleapis.com/maps/api/js?key=' + google.google + '&libraries=places'}></script>
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
@@ -98,6 +105,7 @@ class App extends React.Component {
                 city={this.state.city}
                 handleCityChange={this.handleCityChange}
                 autocomplete={this.autocomplete}
+                click={this.click}
               />
             )}
           />
@@ -126,4 +134,6 @@ App.propTypes = {
 };
 
 export default withRouter(App);
+
+// ' + google.google + '
 

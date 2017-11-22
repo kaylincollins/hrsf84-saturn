@@ -1,4 +1,5 @@
 import React from 'react';
+import google from '../../../config';
 
 function HomePage(props) {
   return (
@@ -10,7 +11,7 @@ function HomePage(props) {
       </div>
       <br />
       <div className="citysearch">
-        <input id="autocomplete" type="text" placeholder="Enter a city here..." onChange={props.handleCityChange && props.autocomplete}/>
+        <input id="autocomplete" type="text" placeholder="Enter a city here..." onChange={props.autocomplete}/>
         <input id="citybutton" type="submit" value="Go!" onClick={() => {props.search(props.city)}}/>
       </div>
       <div>

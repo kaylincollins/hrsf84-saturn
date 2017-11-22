@@ -16,12 +16,18 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('PicVoyage best app ever'));
 
+app.post('/', (req, res) => {
+  yelp.yelpToken(function(body) {
+    res.send(body);
+  })
+})
+
 app.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/public/` });
 });
 
 app.post('/search', (req, res) => {
-  yelp(req.body.search, function(restaurants) {
+  yelp.yelp(req.body.search, function(restaurants) {
     res.send(restaurants);
   })
 })
