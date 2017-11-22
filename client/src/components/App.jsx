@@ -5,6 +5,7 @@ import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
 import $ from 'jquery';
+import google from '../../../config';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.saveVoyage = this.saveVoyage.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.search = this.search.bind(this);
+    this.autocomplete = this.autocomplete.bind(this);
     this.setState = this.setState.bind(this);
   }
 
@@ -32,6 +34,7 @@ class App extends React.Component {
   }
 
   search(city) {
+    console.log(this.state.google);
     $.ajax({
       type: 'POST',
       url: '/search',
@@ -47,6 +50,15 @@ class App extends React.Component {
         console.log('ERROR ', err);
       }
     })
+  }
+
+  autocomplete() {
+    console.log('https://maps.googleapis.com/maps/api/js?key=' + google.google + '&libraries=places');
+    let autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('autocomplete')), {
+        type: ['(cities']
+      }
+    )
   }
 
   handlePhotoClick(index) {
@@ -72,6 +84,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <script type="text/javascript" src={'https://maps.googleapis.com/maps/api/js?key=' + google.google + '&libraries=places'}></script>
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
@@ -84,6 +97,7 @@ class App extends React.Component {
                 search={this.search}
                 city={this.state.city}
                 handleCityChange={this.handleCityChange}
+                autocomplete={this.autocomplete}
               />
             )}
           />
@@ -112,3 +126,4 @@ App.propTypes = {
 };
 
 export default withRouter(App);
+

@@ -8,7 +8,7 @@ var yelp = function(city, cb) {
   var options = {
     url: `https://api.yelp.com/v3/businesses/search?term=${term}&location=${city}`,
     headers:{
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${token.token}`,
     },
   }
 
@@ -18,7 +18,7 @@ var yelp = function(city, cb) {
     var attractionsOptions = {
       url: `https://api.yelp.com/v3/businesses/search?term=${tourist}&location=${city}`,
       headers:{
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${token.token}`,
       },
     }
     request.get(attractionsOptions, function(err, response, body) {
