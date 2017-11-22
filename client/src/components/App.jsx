@@ -79,6 +79,7 @@ class App extends React.Component {
   }
 
   saveVoyage() {
+    console.log('!!!!!!!!!!!!in save voyage');
     let { username } = this.state;
     if (!this.state.username) {
       username = prompt('Enter a username');
@@ -120,6 +121,13 @@ class App extends React.Component {
               />
             )}
           />
+          <Route
+            path="/voyages"
+            render={() => (
+              <JournalPage
+              />
+            )}
+          />
         </Switch>
       </div>
     );
@@ -134,5 +142,4 @@ App.propTypes = {
 
 export default withRouter(App);
 
-// ' + google.google + '
 
