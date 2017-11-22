@@ -29,6 +29,7 @@ module.exports.fetchAllVoyages = (req, res, next) => {
 }
 
 module.exports.saveVoyage = (req, res, next) => {
+  console.log('inside server save voyages!!!')
   var newVoyage = new Voyage({
     list: req.body.list,
     username: req.body.username,

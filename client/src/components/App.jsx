@@ -60,6 +60,7 @@ class App extends React.Component {
   }
 
   saveVoyage() {
+    console.log('!!!!!!!!!!!!in save voyage');
     let { username } = this.state;
     if (!this.state.username) {
       username = prompt('Enter a username');
@@ -96,6 +97,13 @@ class App extends React.Component {
                 handlePhotoClick={this.handlePhotoClick}
                 removeEntry={this.removeEntry}
                 saveVoyage={this.saveVoyage}
+              />
+            )}
+          />
+          <Route
+            path="/voyages"
+            render={() => (
+              <JournalPage
               />
             )}
           />
