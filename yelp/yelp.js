@@ -1,4 +1,3 @@
-var token = require('../config');
 var db = require('../database/index');
 var request = require('request');
 var token;
