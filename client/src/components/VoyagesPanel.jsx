@@ -4,7 +4,7 @@ import Masonry from 'react-masonry-component';
 
 function VoyagesPanel({voyages, handleVoyageClick}) {
   return (
-    <div id="voyages-panel">
+    <div id="photo-panel">
       <Masonry
         className="photo-gallery"
         elementType="ul"
