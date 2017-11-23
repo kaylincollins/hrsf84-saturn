@@ -9,20 +9,26 @@ function VoyagesPanel({voyages, handleVoyageClick}) {
         className="photo-gallery"
         elementType="ul"
       >
-        {voyages.map((voyage, index) => (
+        {voyages.map((voyage, index) => {
+          return (
           <li
             className="voyage"
             key={index}
             onClick={() => handleVoyageClick(index)}
             role="menuitem"
-          >
+          > 
+            <div>
             <img
               src={voyage.list[0].image_url}
               alt={voyage.location}
               width={Math.floor(document.getElementById('app').clientWidth / 4)}
             />
-          </li>
-        ))}
+            </div>
+            <div className="voyage-name"> {voyage.location} </div>
+
+          </li> 
+        )}
+      )}
       </Masonry>
     </div>
   );
