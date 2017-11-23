@@ -16,6 +16,7 @@ class App extends React.Component {
       voyage: [],
       city: 'San Francisco',
       username: '',
+      voyages: []
     };
 
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
@@ -24,6 +25,7 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.autocomplete = this.autocomplete.bind(this);
     this.setState = this.setState.bind(this);
+    this.handleVoyageClick = this.handleVoyageClick.bind(this);
   }
 
   componentDidMount() {
@@ -58,19 +60,23 @@ class App extends React.Component {
   }
 
   autocomplete(changeCity) {
-    console.log('A ', changeCity.target.value);
+    // console.log('A ', changeCity.target.value);
     this.setState({ 
       city: changeCity.target.value
     });
-    let autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('autocomplete')), {
-        type: ['(cities)']
-      }
-    )
+    // let autocomplete = new google.maps.places.Autocomplete(
+    //   (document.getElementById('autocomplete')), {
+    //     type: ['(cities)']
+    //   }
+    // )
   }
 
   handlePhotoClick(index) {
     this.setState({ voyage: this.state.voyage.concat(this.state.photos[index]) });
+  }
+
+  handleVoyageClick(index) {
+    this.setState({ voyage: this.state.voyages[index].list });
   }
 
   removeEntry(index) {
@@ -86,9 +92,21 @@ class App extends React.Component {
       this.setState({ username });
     }
 
-    $.post('/voyages', { username, location: this.state.city, list: this.state.voyage }, () => {
-      this.props.history.push('/voyages');
-    });
+    $.ajax({
+      type: 'POST',
+      url: '/voyages',
+      data: { username, location: this.state.city, list: this.state.voyage },
+      success: (voyages) => {
+        this.setState({
+          voyages: JSON.parse(voyages)
+        }, function() {
+          this.props.history.push('/voyages');
+        })
+      },
+      error: (err) => {
+        console.log('ERROR ', err);
+      }
+    })
   }
 
   render() {
@@ -127,9 +145,9 @@ class App extends React.Component {
             path="/voyages"
             render={() => (
               <JournalPage
-                photos={this.state.photos}
+                voyages={this.state.voyages}
                 voyage={this.state.voyage}
-                handlePhotoClick={this.handlePhotoClick}
+                handleVoyageClick={this.handleVoyageClick}
                 removeEntry={this.removeEntry}
                 saveVoyage={this.saveVoyage}
               />
