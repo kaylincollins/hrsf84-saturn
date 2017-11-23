@@ -10,7 +10,7 @@ function JournalPage({
   return (
     <div id="journal">
       <VoyagesPanel voyages={voyages} handleVoyageClick={handleVoyageClick} />
-      <VoyageView voyage={voyage} removeEntry={removeEntry} saveVoyage={saveVoyage} select />
+      <VoyageView voyage={voyage} removeEntry={removeEntry} select={false} />
     </div>
   );
 }
@@ -20,7 +20,6 @@ JournalPage.propTypes = {
   voyage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleVoyageClick: PropTypes.func.isRequired,
   removeEntry: PropTypes.func.isRequired,
-  saveVoyage: PropTypes.func.isRequired,
 };
 
 export default JournalPage;

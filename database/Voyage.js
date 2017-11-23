@@ -29,9 +29,7 @@ module.exports.saveVoyage = (req, res, next) => {
     username: req.body.username,
     location: req.body.location
   })
-  newVoyage.save(function(err, updatedVoyage) {
-    if (err) {
-      throw err;
-    } 
-  }).then(()=>next())
+  newVoyage.save()
+  .catch( console.log('error') )
+  .then( () => next() )
 }
