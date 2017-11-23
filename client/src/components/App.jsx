@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
+import JournalPage from './JournalPage';
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -79,14 +80,15 @@ class App extends React.Component {
   }
 
   saveVoyage() {
-    console.log('!!!!!!!!!!!!in save voyage');
     let { username } = this.state;
     if (!this.state.username) {
       username = prompt('Enter a username');
       this.setState({ username });
     }
 
-    $.post('/voyages', { username, location: this.state.city, list: this.state.voyage });
+    $.post('/voyages', { username, location: this.state.city, list: this.state.voyage }, () => {
+      this.props.history.push('/voyages');
+    });
   }
 
   render() {
@@ -125,6 +127,11 @@ class App extends React.Component {
             path="/voyages"
             render={() => (
               <JournalPage
+                photos={this.state.photos}
+                voyage={this.state.voyage}
+                handlePhotoClick={this.handlePhotoClick}
+                removeEntry={this.removeEntry}
+                saveVoyage={this.saveVoyage}
               />
             )}
           />

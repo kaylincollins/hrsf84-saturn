@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import VoyagesPanel from './VoyagesPanel';
 import VoyageView from './VoyageView';
 
-function JournalPage() {
+function JournalPage({
+  photos, voyage, handlePhotoClick, removeEntry, saveVoyage,
+}) {
   return (
     <div id="journal">
       <VoyagesPanel  />

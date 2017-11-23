@@ -12,11 +12,10 @@ function VoyagesPanel() {
         
             <img
               src='https://upload.wikimedia.org/wikipedia/en/thumb/6/63/IMG_%28business%29.svg/1200px-IMG_%28business%29.svg.png'
-              alt={photo.name}
               width={Math.floor(document.getElementById('app').clientWidth / 4)}
             />
-          </li>
-        ))}
+          
+     
       </Masonry>
     </div>
   );
