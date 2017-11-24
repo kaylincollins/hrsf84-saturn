@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import shortid from 'shortid';
 import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
@@ -69,7 +70,12 @@ class App extends React.Component {
   }
 
   handlePhotoClick(index) {
-    this.setState({ voyage: this.state.voyage.concat(this.state.photos[index]) });
+    this.setState({
+      voyage: this.state.voyage.concat(Object.assign(
+        { shortid: shortid.generate() },
+        this.state.photos[index],
+      )),
+    });
   }
 
   removeEntry(index) {
