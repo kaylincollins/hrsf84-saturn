@@ -21,15 +21,15 @@ describe('VoyageEntry', () => {
     expect(wrapper.is('.voyage-entry')).toBe(true);
   });
 
-  test('should contain an "✗" button', () => {
-    const wrapper = shallow(<VoyageEntry entry={{}} removeEntry={() => {}} />);
+  test('should contain an "✗" button when on select page', () => {
+    const wrapper = shallow(<VoyageEntry entry={{}} removeEntry={() => {}} select />);
 
     expect(wrapper.html()).toContain('✗');
   });
 
   test('should call removeEntry when "✗" is clicked', () => {
     const removeEntry = jest.fn();
-    const wrapper = shallow(<VoyageEntry entry={{}} removeEntry={removeEntry} />);
+    const wrapper = shallow(<VoyageEntry entry={{}} removeEntry={removeEntry} select />);
 
     expect(removeEntry).not.toHaveBeenCalled();
     wrapper.find('span').first().simulate('click');

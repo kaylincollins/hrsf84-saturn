@@ -14,6 +14,7 @@ function VoyageView({
             entry={entry}
             key={entry.shortid}
             removeEntry={() => removeEntry(index)}
+            select={select}
           />
         ))}
       </ul>

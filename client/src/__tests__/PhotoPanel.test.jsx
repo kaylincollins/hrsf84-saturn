@@ -21,18 +21,18 @@ describe('PhotoPanel', () => {
   });
 
   test('should be selectable by id "photo-panel"', () => {
-    const wrapper = shallow(<PhotoPanel photos={[{}]} handlePhotoClick={() => {}} />);
+    const wrapper = shallow(<PhotoPanel photos={[{ id: 1 }]} handlePhotoClick={() => {}} />);
 
     expect(wrapper.is('#photo-panel')).toBe(true);
   });
 
   test('should call handlePhotoClick when image is clicked', () => {
-    const handlePhotoClick = jest.fn();
-    const wrapper = shallow(<PhotoPanel photos={[{}]} handlePhotoClick={handlePhotoClick} />);
+    const testClick = jest.fn();
+    const wrapper = shallow(<PhotoPanel photos={[{ id: 1 }]} handlePhotoClick={testClick} />);
 
-    expect(handlePhotoClick).not.toHaveBeenCalled();
+    expect(testClick).not.toHaveBeenCalled();
     wrapper.find('li').first().simulate('click');
-    expect(handlePhotoClick).toHaveBeenCalled();
+    expect(testClick).toHaveBeenCalled();
   });
 
   test('should render images to the panel', () => {
