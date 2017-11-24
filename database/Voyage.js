@@ -30,6 +30,6 @@ module.exports.saveVoyage = (req, res, next) => {
     location: req.body.location
   })
   newVoyage.save()
-  .catch( console.log('error') )
+  .catch( () => console.log('error') )
   .then( () => next() )
 }
