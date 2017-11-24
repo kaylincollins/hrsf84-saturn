@@ -12,7 +12,7 @@ function PhotoPanel({ photos, handlePhotoClick }) {
         {photos.map((photo, index) => (
           <li
             className="photo"
-            key={index}
+            key={photo.id}
             onClick={() => handlePhotoClick(index)}
             role="menuitem"
           >

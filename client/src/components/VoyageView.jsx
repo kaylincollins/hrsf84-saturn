@@ -12,8 +12,9 @@ function VoyageView({
         {voyage.map((entry, index) => (
           <VoyageEntry
             entry={entry}
-            key={entry.id + index}
+            key={entry.shortid}
             removeEntry={() => removeEntry(index)}
+            select={select}
           />
         ))}
       </ul>

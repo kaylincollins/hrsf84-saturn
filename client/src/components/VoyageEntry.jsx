@@ -23,8 +23,8 @@ class VoyageEntry extends React.Component {
       details = (
         <div className="voyage-entry-details">
           <div>{this.props.entry.name}</div>
-          {this.props.entry.location.display_address.map((line, key) => (
-            <div className="address" key={line + key}>{line}</div>
+          {this.props.entry.location.display_address.map(line => (
+            <div className="address" key={line + this.props.entry.shortid}>{line}</div>
           ))}
         </div>
       );
@@ -37,7 +37,7 @@ class VoyageEntry extends React.Component {
         role="menuitem"
       >
         <div className="voyage-image">
-          <span onClick={this.props.removeEntry} role="button" tabIndex={0}>&#x2717;</span>
+          {this.props.select ? <span onClick={this.props.removeEntry} role="button" tabIndex={0}>&#x2717;</span> : ''}
           <img
             src={this.props.entry.image_url}
             alt={this.props.entry.name}
@@ -55,8 +55,15 @@ VoyageEntry.propTypes = {
     name: PropTypes.String,
     location: PropTypes.shape([]),
     image_url: PropTypes.String,
+    shortid: PropTypes.String,
   }).isRequired,
-  removeEntry: PropTypes.func.isRequired,
+  removeEntry: PropTypes.func,
+  select: PropTypes.bool,
+};
+
+VoyageEntry.defaultProps = {
+  removeEntry: () => {},
+  select: false,
 };
 
 export default VoyageEntry;
