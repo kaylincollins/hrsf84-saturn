@@ -65,11 +65,11 @@ class App extends React.Component {
     this.setState({ 
       city: changeCity.target.value
     });
-    let autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('autocomplete')), {
-        type: ['(cities)']
-      }
-    )
+    // let autocomplete = new google.maps.places.Autocomplete(
+    //   (document.getElementById('autocomplete')), {
+    //     type: ['(cities)']
+    //   }
+    // )
   }
 
   handlePhotoClick(index) {
@@ -120,6 +120,9 @@ class App extends React.Component {
       <div className="container">
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
+        </div>
+        <div className="book">
+          <a href="/voyages"><img src="/images/book.png" alt="logo" /></a>
         </div>
         <Switch>
           <Route
