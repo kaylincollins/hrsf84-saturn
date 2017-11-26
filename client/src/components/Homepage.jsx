@@ -15,7 +15,7 @@ function HomePage(props) {
       </div>
       <div>
       <br />
-        <img className="homeImg" src="http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1487701021/eiffel-tower-paris-france-EIFFEL0217.jpg?itok=m0MZOYjh"onClick={() => {props.search('Paris, France')}}/>
+        <img className="homeImg" src="https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1487701021/eiffel-tower-paris-france-EIFFEL0217.jpg?itok=m0MZOYjh"onClick={() => {props.search('Paris, France')}}/>
         <img className="homeImg" src="https://api.services.trvl.com/backgrounds/images/singapore_1.jpg" onClick={() => {props.search('Singapore, Singapore')}}/>
         <img className="homeImg" src="https://i.ytimg.com/vi/WNH7Xc_V2w0/maxresdefault.jpg" onClick={() => {props.search('Sydney, Australia')}}/>
       </div>
