@@ -41,7 +41,8 @@ module.exports = server;
 
 //route to return all existing voyages from the DB that belong to the specified username
 //this should be called when pressing the book icon 
-app.get('/voyages', db.fetchAllVoyages, (req, res) => {
+app.post('/usersVoyages', db.fetchAllVoyages, (req, res) => {
+  console.log('inside voyages')
   res.end();
 })
 

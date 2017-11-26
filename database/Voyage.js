@@ -14,6 +14,7 @@ const Voyage = mongoose.model('Voyage', voyageSchema);
 module.exports.Voyage = Voyage;
 
 module.exports.fetchAllVoyages = (req, res, next) => {
+  console.log('inside fetch', req.body);
   Voyage.find({username: req.body.username}, function(err, voyages) {
     if (err) {
       throw err;
