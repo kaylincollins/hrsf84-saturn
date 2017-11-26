@@ -24,7 +24,6 @@ var yelp = function(city, cb) {
     request.get(attractionsOptions, function(err, response, body) {
       var attractions = JSON.parse(body).businesses;
       var cityPics = restaurants.concat(attractions);
-      console.log('R and T ', cityPics)
       cb(cityPics)
     })
   })
@@ -39,7 +38,7 @@ var yelpToken = function(cb) {
   }
   request.post(options, function(err, response, body) {
     token = JSON.parse(body).access_token;
-    cb('Got Token');
+    cb('');
   })
 }
 
