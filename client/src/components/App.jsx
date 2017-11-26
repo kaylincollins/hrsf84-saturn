@@ -27,6 +27,7 @@ class App extends React.Component {
     this.autocomplete = this.autocomplete.bind(this);
     this.setState = this.setState.bind(this);
     this.handleVoyageClick = this.handleVoyageClick.bind(this);
+    this.checkForUsername = this.checkForUsername.bind(this);
   }
 
   componentDidMount() {
@@ -65,11 +66,11 @@ class App extends React.Component {
     this.setState({ 
       city: changeCity.target.value
     });
-    // let autocomplete = new google.maps.places.Autocomplete(
-    //   (document.getElementById('autocomplete')), {
-    //     type: ['(cities)']
-    //   }
-    // )
+    let autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('autocomplete')), {
+        type: ['(cities)']
+      }
+    )
   }
 
   handlePhotoClick(index) {
@@ -115,6 +116,29 @@ class App extends React.Component {
     })
   }
 
+  checkForUsername() {
+    let { username } = this.state;
+    if(!this.state.username) {
+      username = prompt('Enter a username');
+      this.setState({ username });
+    } 
+    $.ajax({
+      type: 'POST',
+      url: '/usersVoyages',
+      data: { username },
+      success: (voyages) => {
+        this.setState({
+          voyages: JSON.parse(voyages)
+        }, function() {
+          this.props.history.push('/voyages');
+        })
+      },
+      error: (err) => {
+        console.log('ERROR ', err);
+      }
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -122,7 +146,7 @@ class App extends React.Component {
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
         <div className="book">
-          <a href="/voyages"><img src="/images/book.png" alt="logo" /></a>
+          <a><img src="/images/book.png" alt="logo" onClick={this.checkForUsername}/></a>
         </div>
         <Switch>
           <Route
