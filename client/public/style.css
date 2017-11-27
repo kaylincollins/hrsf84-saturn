@@ -18,7 +18,7 @@ body {
 }
 
 .book {
-  position: fixed;
+  position: absolute;
   display: block;
   top: 8px;
   right: 8px;
@@ -70,12 +70,13 @@ img {
 }
 
 #voyage-view {
-  border-left: 3px inset blue;
+  border-left: 3px inset black;
   text-align: center;
   height: 100vh;
   width: 24%;
   float: right;
   overflow-y: scroll;
+  background-color: #DCF7FE;
 }
 
 .voyage-image {
@@ -109,6 +110,7 @@ img {
 button#save-voyage {
   position: fixed;
   display: block;
+  color: white;
   bottom: 5px;
   right: 10px;
   z-index: 2;
@@ -117,6 +119,29 @@ button#save-voyage {
   border: none;
   font-size: 14px;
   font-style: italic;
+  border-radius: 3px;
+}
+
+.photo-panel-header {
+  color: white;
+  font-family: "Brush Script Std", cursive;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 40px;
+}
+
+.voyage-view-header {
+  font-family: "Brush Script Std", cursive;
+  text-align: center;
+  font-size: 30px;
+}
+
+.journal-page-header {
+  color: white;
+  font-family: "Brush Script Std", cursive;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 40px;
 }
 
 .homepage {

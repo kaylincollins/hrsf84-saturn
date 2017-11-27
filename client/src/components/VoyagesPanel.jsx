@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component';
 function VoyagesPanel({ voyages, handleVoyageClick }) {
   return (
     <div id="photo-panel">
+      <h2 className="journal-page-header">Select a Saved Voyage</h2>
       <Masonry
         className="photo-gallery"
         elementType="ul"
