@@ -61,15 +61,14 @@ class App extends React.Component {
   }
 
   autocomplete(changeCity) {
-    // console.log('A ', changeCity.target.value);
     this.setState({ 
       city: changeCity.target.value
     });
-    // let autocomplete = new google.maps.places.Autocomplete(
-    //   (document.getElementById('autocomplete')), {
-    //     type: ['(cities)']
-    //   }
-    // )
+    let autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('autocomplete')), {
+        type: ['(cities)']
+      }
+    )
   }
 
   handlePhotoClick(index) {
