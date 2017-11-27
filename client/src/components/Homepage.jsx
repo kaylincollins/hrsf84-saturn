@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function HomePage({
-  search, city, book,
+  search, book,
 }) {
   const autocomplete = function googlePlacesAutocomplete() {
     return new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
@@ -34,7 +34,7 @@ function HomePage({
           placeholder="Enter a city here..."
           onChange={autocomplete}
         />
-        <input id="citybutton" type="submit" value="Go!" onClick={() => search(city)} />
+        <input id="citybutton" type="submit" value="Go!" onClick={() => search()} />
       </div>
       <div>
         <br />
@@ -54,7 +54,6 @@ function HomePage({
 
 HomePage.propTypes = {
   search: PropTypes.func.isRequired,
-  city: PropTypes.string.isRequired,
   book: PropTypes.func.isRequired,
 };
 
