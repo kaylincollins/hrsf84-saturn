@@ -26,12 +26,13 @@ class App extends React.Component {
     this.saveVoyage = this.saveVoyage.bind(this);
     this.search = this.search.bind(this);
     this.autocomplete = this.autocomplete.bind(this);
-    this.setState = this.setState.bind(this);
     this.handleVoyageClick = this.handleVoyageClick.bind(this);
     this.checkForUsername = this.checkForUsername.bind(this);
   }
 
-  search(city) {
+  search() {
+    const city = $('#autocomplete').val();
+    this.setState({ city });
     $.ajax({
       type: 'POST',
       url: '/search',
@@ -53,9 +54,11 @@ class App extends React.Component {
     this.setState({
       city: changeCity.target.value,
     });
-    new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
-      type: ['(cities)'],
+    const autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+      types: ['(cities)'],
     });
+
+    return autocomplete;
   }
 
   handlePhotoClick(index) {
