@@ -35,7 +35,6 @@ class App extends React.Component {
       type: 'POST',
       url: '/',
       success: (cityInfo) => {
-        console.log(cityInfo)
       },
       error: (err) => {
         console.log('ERROR ', err);
@@ -66,11 +65,11 @@ class App extends React.Component {
     this.setState({ 
       city: changeCity.target.value
     });
-    let autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('autocomplete')), {
-        type: ['(cities)']
-      }
-    )
+    // let autocomplete = new google.maps.places.Autocomplete(
+    //   (document.getElementById('autocomplete')), {
+    //     type: ['(cities)']
+    //   }
+    // )
   }
 
   handlePhotoClick(index) {

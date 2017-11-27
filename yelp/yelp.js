@@ -1,6 +1,9 @@
 var db = require('../database/index');
 var request = require('request');
 var token;
+var expires;
+var date = '';
+var currentTime;
 
 
 var yelp = function(city, cb) {
@@ -30,6 +33,25 @@ var yelp = function(city, cb) {
 }
 
 var yelpToken = function(cb) {
+  if (date === '') {
+    grabToken(cb);
+  } else if (tokenValid()) {
+    cb('');
+  } else {
+    grabToken(cb);
+  }
+}
+
+var tokenValid = function() {
+  currentTime = Date.now();
+  if ((currentTime - date.getTime()) > expires) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+var grabToken = function(cb){
   var options = {
     url: `https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${process.env.CLIENTID}&client_secret=${process.env.CLIENTSECRET}`,
     headers: {
@@ -38,6 +60,8 @@ var yelpToken = function(cb) {
   }
   request.post(options, function(err, response, body) {
     token = JSON.parse(body).access_token;
+    expires = JSON.parse(body).expires_in;
+    date = new Date();
     cb('');
   })
 }
