@@ -25,7 +25,6 @@ class App extends React.Component {
     this.removeEntry = this.removeEntry.bind(this);
     this.saveVoyage = this.saveVoyage.bind(this);
     this.search = this.search.bind(this);
-    this.autocomplete = this.autocomplete.bind(this);
     this.handleVoyageClick = this.handleVoyageClick.bind(this);
     this.checkForUsername = this.checkForUsername.bind(this);
   }
@@ -48,17 +47,6 @@ class App extends React.Component {
         console.log('ERROR ', err);
       },
     });
-  }
-
-  autocomplete(changeCity) {
-    this.setState({
-      city: changeCity.target.value,
-    });
-    const autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
-      types: ['(cities)'],
-    });
-
-    return autocomplete;
   }
 
   handlePhotoClick(index) {
@@ -142,7 +130,6 @@ class App extends React.Component {
                 search={this.search}
                 city={this.state.city}
                 handleCityChange={this.handleCityChange}
-                autocomplete={this.autocomplete}
                 click={this.click}
                 book={this.checkForUsername}
               />

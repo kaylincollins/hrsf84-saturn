@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function HomePage({
-  search, autocomplete, city, book,
+  search, city, book,
 }) {
+  const autocomplete = function googlePlacesAutocomplete() {
+    return new window.google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+      types: ['(cities)'],
+    });
+  };
+
   return (
     <div className="homepage">
       <div className="book" onClick={() => book()} role="button" tabIndex={0}>
@@ -48,7 +54,6 @@ function HomePage({
 
 HomePage.propTypes = {
   search: PropTypes.func.isRequired,
-  autocomplete: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
   book: PropTypes.func.isRequired,
 };
