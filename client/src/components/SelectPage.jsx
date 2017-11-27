@@ -5,11 +5,11 @@ import PhotoPanel from './PhotoPanel';
 import VoyageView from './VoyageView';
 
 function SelectPage({
-  photos, voyage, handlePhotoClick, removeEntry, saveVoyage,
+  photos, voyage, handlePhotoClick, removeEntry, saveVoyage, book
 }) {
   return (
     <div id="select">
-      <PhotoPanel photos={photos} handlePhotoClick={handlePhotoClick} />
+      <PhotoPanel photos={photos} handlePhotoClick={handlePhotoClick} book={book} />
       <VoyageView voyage={voyage} removeEntry={removeEntry} saveVoyage={saveVoyage} select />
     </div>
   );

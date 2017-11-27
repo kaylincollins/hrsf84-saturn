@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
 
-function PhotoPanel({ photos, handlePhotoClick }) {
+function PhotoPanel({ photos, handlePhotoClick, book }) {
   return (
     <div id="photo-panel">
+      <div className="select-book">
+        <a><img src="/images/book.png" alt="logo" onClick={() => book()}/></a>
+      </div>
       <Masonry
         className="photo-gallery"
         elementType="ul"
