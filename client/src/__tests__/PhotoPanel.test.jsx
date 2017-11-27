@@ -21,14 +21,18 @@ describe('PhotoPanel', () => {
   });
 
   test('should be selectable by id "photo-panel"', () => {
-    const wrapper = shallow(<PhotoPanel photos={[{ id: 1 }]} handlePhotoClick={() => {}} />);
+    const wrapper = shallow((
+      <PhotoPanel photos={[{ id: 1 }]} handlePhotoClick={() => {}} book={() => {}} />
+    ));
 
     expect(wrapper.is('#photo-panel')).toBe(true);
   });
 
   test('should call handlePhotoClick when image is clicked', () => {
     const testClick = jest.fn();
-    const wrapper = shallow(<PhotoPanel photos={[{ id: 1 }]} handlePhotoClick={testClick} />);
+    const wrapper = shallow((
+      <PhotoPanel photos={[{ id: 1 }]} handlePhotoClick={testClick} book={() => {}} />
+    ));
 
     expect(testClick).not.toHaveBeenCalled();
     wrapper.find('li').first().simulate('click');
@@ -39,8 +43,9 @@ describe('PhotoPanel', () => {
     const wrapper = shallow(<PhotoPanel
       photos={sampleData.businesses}
       handlePhotoClick={() => {}}
+      book={() => {}}
     />);
 
-    expect(wrapper.find('img')).toHaveLength(20);
+    expect(wrapper.find('img').length).toBeGreaterThanOrEqual(20);
   });
 });

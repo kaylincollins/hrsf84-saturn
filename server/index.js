@@ -24,7 +24,7 @@ app.post('/search', (req, res) => {
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.log(`listenting on ${port}`);
+  console.log(`listening on ${port}`);
 });
 
 module.exports = server;
@@ -32,7 +32,6 @@ module.exports = server;
 // route to return all existing voyages from the DB that belong to the specified username
 // this should be called when pressing the book icon
 app.post('/usersVoyages', db.fetchAllVoyages, (req, res) => {
-  console.log('inside voyages');
   res.end();
 });
 

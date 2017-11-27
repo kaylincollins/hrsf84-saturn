@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function HomePage({ search, autocomplete, city }) {
+function HomePage({
+  search, autocomplete, city, book,
+}) {
   return (
     <div className="homepage">
-      <div className="book">
-        <a><img src="/images/book.png" alt="logo" onClick={() => props.book()}/></a>
+      <div className="book" onClick={() => book()} role="button" tabIndex={0}>
+        <img src="/images/book.png" alt="logo" />
       </div>
       <div>
         <div className="homeImgContainer" onClick={() => search('New York City, New York')} role="menuitem" tabIndex={0}>
@@ -48,6 +50,7 @@ HomePage.propTypes = {
   search: PropTypes.func.isRequired,
   autocomplete: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
+  book: PropTypes.func.isRequired,
 };
 
 export default HomePage;

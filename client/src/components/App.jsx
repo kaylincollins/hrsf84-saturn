@@ -31,22 +31,6 @@ class App extends React.Component {
     this.checkForUsername = this.checkForUsername.bind(this);
   }
 
-<<<<<<< HEAD
-=======
-  componentDidMount() {
-    $.ajax({
-      type: 'POST',
-      url: '/',
-      success: (cityInfo) => {
-        console.log(cityInfo);
-      },
-      error: (err) => {
-        console.log('ERROR ', err);
-      },
-    });
-  }
-
->>>>>>> Fix linter errors
   search(city) {
     $.ajax({
       type: 'POST',
