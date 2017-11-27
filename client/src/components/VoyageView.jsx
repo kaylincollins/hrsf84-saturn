@@ -8,6 +8,7 @@ function VoyageView({
 }) {
   return (
     <div id="voyage-view">
+      <h1 className="voyage-view-header">Your Voyage</h1>
       <ul>
         {voyage.map((entry, index) => (
           <VoyageEntry

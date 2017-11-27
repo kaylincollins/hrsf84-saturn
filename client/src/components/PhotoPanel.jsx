@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component';
 function PhotoPanel({ photos, handlePhotoClick, book }) {
   return (
     <div id="photo-panel">
+      <h2 className='photo-panel-header'>Select Photos for Your Next Voyage</h2>
       <div className="select-book" onClick={() => book()} role="button" tabIndex={0}>
         <img src="/images/book.png" alt="logo" />
       </div>
