@@ -15,12 +15,6 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('PicVoyage best app ever'));
 
-app.post('/', (req, res) => {
-  yelp.yelpToken(function(body) {
-    res.status(201).send(body);
-  })
-})
-
 app.get('*', (req, res) => {
   res.sendFile('index.html', { root: `${__dirname}/../client/public/` });
 });

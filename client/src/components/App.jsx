@@ -30,19 +30,6 @@ class App extends React.Component {
     this.checkForUsername = this.checkForUsername.bind(this);
   }
 
-  componentDidMount() {
-    $.ajax({
-      type: 'POST',
-      url: '/',
-      success: (cityInfo) => {
-        console.log(cityInfo)
-      },
-      error: (err) => {
-        console.log('ERROR ', err);
-      }
-    })
-  }
-
   search(city) {
     $.ajax({
       type: 'POST',
@@ -62,7 +49,6 @@ class App extends React.Component {
   }
 
   autocomplete(changeCity) {
-    // console.log('A ', changeCity.target.value);
     this.setState({ 
       city: changeCity.target.value
     });
