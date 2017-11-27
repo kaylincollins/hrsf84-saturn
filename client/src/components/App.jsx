@@ -30,18 +30,6 @@ class App extends React.Component {
     this.checkForUsername = this.checkForUsername.bind(this);
   }
 
-  componentDidMount() {
-    $.ajax({
-      type: 'POST',
-      url: '/',
-      success: (cityInfo) => {
-      },
-      error: (err) => {
-        console.log('ERROR ', err);
-      }
-    })
-  }
-
   search(city) {
     $.ajax({
       type: 'POST',
@@ -64,11 +52,11 @@ class App extends React.Component {
     this.setState({ 
       city: changeCity.target.value
     });
-    let autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('autocomplete')), {
-        type: ['(cities)']
-      }
-    )
+    // let autocomplete = new google.maps.places.Autocomplete(
+    //   (document.getElementById('autocomplete')), {
+    //     type: ['(cities)']
+    //   }
+    // )
   }
 
   handlePhotoClick(index) {

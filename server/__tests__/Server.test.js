@@ -31,15 +31,6 @@ describe('server', () => {
     });
   });
 
-  test('should respond to POST requests for / with a 201 status code', (done) => {
-    request.post('http://127.0.0.1:3000/', (error, response) => {
-      if (!error) {
-        expect(response.statusCode).toBe(201);
-      }
-      done();
-    });
-  });
-
   test('should respond to POST requests for /search with a 201 status code', (done) => {
     request.post('http://127.0.0.1:3000/search', (error, response) => {
       if (!error) {
