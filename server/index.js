@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const db = require('../database/Voyage');
 const yelp = require('../yelp/yelp');
 
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,7 +17,7 @@ app.get('/', (req, res) => res.send('PicVoyage best app ever'));
 
 app.post('/', (req, res) => {
   yelp.yelpToken(function(body) {
-    res.send(body);
+    res.status(201).send(body);
   })
 })
 
@@ -28,7 +27,7 @@ app.get('*', (req, res) => {
 
 app.post('/search', (req, res) => {
   yelp.yelp(req.body.search, function(restaurants) {
-    res.send(restaurants);
+    res.status(201).send(restaurants);
   })
 })
 

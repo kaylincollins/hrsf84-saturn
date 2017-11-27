@@ -23,7 +23,7 @@ describe('server', () => {
   });
 
   test('should serve index.html for client side routes', (done) => {
-    request('http://127.0.0.1:3000/select', (error, response) => {
+    request.get('http://127.0.0.1:3000/select', (error, response) => {
       if (!error) {
         expect(response.body).toContain('PicVoyage');
       }
@@ -32,7 +32,7 @@ describe('server', () => {
   });
 
   test('should respond to POST requests for / with a 201 status code', (done) => {
-    request('http://127.0.0.1:3000/', (error, response) => {
+    request.post('http://127.0.0.1:3000/', (error, response) => {
       if (!error) {
         expect(response.statusCode).toBe(201);
       }
@@ -41,18 +41,9 @@ describe('server', () => {
   });
 
   test('should respond to POST requests for /search with a 201 status code', (done) => {
-    request('http://127.0.0.1:3000/', (error, response) => {
+    request.post('http://127.0.0.1:3000/search', (error, response) => {
       if (!error) {
         expect(response.statusCode).toBe(201);
-      }
-      done();
-    });
-  });
-
-  test('should respond to GET requests for /wrongpath with a 404 status code', (done) => {
-    request('http://127.0.0.1:3000/', (error, response) => {
-      if (!error) {
-        expect(response.statusCode).toBe(404);
       }
       done();
     });

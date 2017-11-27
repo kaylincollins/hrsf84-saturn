@@ -19,7 +19,7 @@ describe('HomePage', () => {
 
   test('should call search when "Go!" is clicked', () => {
     const search = jest.fn();
-    const wrapper = shallow(<Homepage search={search} select />);
+    const wrapper = shallow(<HomePage search={search} select />);
 
     expect(search).not.toHaveBeenCalled();
     wrapper.find('#citybutton').first().simulate('click');
