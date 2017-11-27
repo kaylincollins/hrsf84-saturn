@@ -145,9 +145,6 @@ class App extends React.Component {
         <div className="logo">
           <a href="/"><img src="/images/logo.png" alt="logo" /></a>
         </div>
-        <div className="book">
-          <a><img src="/images/book.png" alt="logo" onClick={this.checkForUsername}/></a>
-        </div>
         <Switch>
           <Route
             exact
@@ -159,6 +156,7 @@ class App extends React.Component {
                 handleCityChange={this.handleCityChange}
                 autocomplete={this.autocomplete}
                 click={this.click}
+                book={this.checkForUsername}
               />
             )}
           />
@@ -171,6 +169,7 @@ class App extends React.Component {
                 handlePhotoClick={this.handlePhotoClick}
                 removeEntry={this.removeEntry}
                 saveVoyage={this.saveVoyage}
+                book={this.checkForUsername}
               />
             )}
           />
