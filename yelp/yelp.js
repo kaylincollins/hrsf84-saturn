@@ -43,7 +43,7 @@ var grabToken = function(cb){
 var grabPictures = function(city, cb) {
   var term = 'restaurants';
   var options = {
-    url: `https://api.yelp.com/v3/businesses/search?term=${term}&location=${city}`,
+    url: `https://api.yelp.com/v3/businesses/search?term=${term}&location=${city}&limit=50`,
     headers:{
       'Authorization': `Bearer ${token}`,
     },
@@ -53,7 +53,7 @@ var grabPictures = function(city, cb) {
     var restaurants = JSON.parse(body).businesses;
     var tourist = 'tourist attractions';
     var attractionsOptions = {
-      url: `https://api.yelp.com/v3/businesses/search?term=${tourist}&location=${city}`,
+      url: `https://api.yelp.com/v3/businesses/search?term=${tourist}&location=${city}&limit=50`,
       headers:{
         'Authorization': `Bearer ${token}`,
       },
@@ -61,9 +61,24 @@ var grabPictures = function(city, cb) {
     request.get(attractionsOptions, function(err, response, body) {
       var attractions = JSON.parse(body).businesses;
       var cityPics = restaurants.concat(attractions);
-      cb(cityPics)
+      randomize(cityPics, function(randomizedPics) {
+        cb(randomizedPics);
+      })
     })
   })
+}
+
+var randomize = function(cityPics, cb) {
+  cityPics.sort(function(picOne, picTwo){
+    if (picOne.rating > picTwo.rating) {
+      return -1;
+    } 
+    if (picOne.rating < picTwo.rating) {
+      return 1;
+    }
+    return 0;
+  })
+  cb(cityPics);
 }
 
 module.exports.yelp = yelp;
