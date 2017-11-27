@@ -5,12 +5,12 @@ import VoyagesPanel from './VoyagesPanel';
 import VoyageView from './VoyageView';
 
 function JournalPage({
-  voyages, voyage, handleVoyageClick, removeEntry, saveVoyage,
+  voyages, voyage, handleVoyageClick,
 }) {
   return (
     <div id="journal">
       <VoyagesPanel voyages={voyages} handleVoyageClick={handleVoyageClick} />
-      <VoyageView voyage={voyage} removeEntry={removeEntry} select={false} />
+      <VoyageView voyage={voyage} select={false} />
     </div>
   );
 }
@@ -19,7 +19,6 @@ JournalPage.propTypes = {
   voyages: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   voyage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleVoyageClick: PropTypes.func.isRequired,
-  removeEntry: PropTypes.func.isRequired,
 };
 
 export default JournalPage;

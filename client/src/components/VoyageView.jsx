@@ -25,12 +25,13 @@ function VoyageView({
 
 VoyageView.propTypes = {
   voyage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  removeEntry: PropTypes.func.isRequired,
+  removeEntry: PropTypes.func,
   saveVoyage: PropTypes.func,
   select: PropTypes.bool,
 };
 
 VoyageView.defaultProps = {
+  removeEntry: () => {},
   saveVoyage: () => {},
   select: false,
 };

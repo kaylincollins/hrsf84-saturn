@@ -16,5 +16,6 @@ module.exports = {
 
   rules: {
     "jsx-a11y/click-events-have-key-events": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
   },
 };

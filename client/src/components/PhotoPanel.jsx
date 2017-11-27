@@ -5,8 +5,8 @@ import Masonry from 'react-masonry-component';
 function PhotoPanel({ photos, handlePhotoClick, book }) {
   return (
     <div id="photo-panel">
-      <div className="select-book">
-        <a><img src="/images/book.png" alt="logo" onClick={() => book()}/></a>
+      <div className="select-book" onClick={() => book()} role="button" tabIndex={0}>
+        <img src="/images/book.png" alt="logo" />
       </div>
       <Masonry
         className="photo-gallery"
@@ -34,6 +34,7 @@ function PhotoPanel({ photos, handlePhotoClick, book }) {
 PhotoPanel.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handlePhotoClick: PropTypes.func.isRequired,
+  book: PropTypes.func.isRequired,
 };
 
 export default PhotoPanel;

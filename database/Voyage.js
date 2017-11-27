@@ -1,36 +1,33 @@
 const mongoose = require('mongoose');
-const db = require('./index');
+require('./index');
+
 mongoose.Promise = global.Promise;
 
 const voyageSchema = new mongoose.Schema({
   id: String,
-  list: Array, 
+  list: Array,
   username: String,
-  location: String
+  location: String,
 });
 
 const Voyage = mongoose.model('Voyage', voyageSchema);
 
 module.exports.Voyage = Voyage;
 
-module.exports.fetchAllVoyages = (req, res, next) => {
+module.exports.fetchAllVoyages = (req, res) => {
   console.log('inside fetch', req.body);
-  Voyage.find({username: req.body.username}, function(err, voyages) {
-    if (err) {
-      throw err;
-    } else {
-      res.send(JSON.stringify(voyages));
-    }
-  })
-}
+  Voyage.find({ username: req.body.username })
+    .catch(() => console.log('error'))
+    .then(voyages => res.send(JSON.stringify(voyages)));
+};
 
 module.exports.saveVoyage = (req, res, next) => {
-  var newVoyage = new Voyage({
+  const newVoyage = new Voyage({
     list: req.body.list,
     username: req.body.username,
-    location: req.body.location
-  })
+    location: req.body.location,
+  });
   newVoyage.save()
-  .catch( () => console.log('error') )
-  .then( () => next() )
-}
+    .catch(() => console.log('error'))
+    .then(() => next());
+};

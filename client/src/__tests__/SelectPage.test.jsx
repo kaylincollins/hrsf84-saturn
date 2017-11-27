@@ -14,6 +14,7 @@ describe('SelectPage', () => {
       handlePhotoClick={() => {}}
       removeEntry={() => {}}
       saveVoyage={() => {}}
+      book={() => {}}
     />);
 
     expect(wrapper.is('#select')).toBe(true);

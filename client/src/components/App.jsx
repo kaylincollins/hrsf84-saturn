@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import shortid from 'shortid';
+import $ from 'jquery';
+
 import SelectPage from './SelectPage';
 import sampleData from '../../../sampleData/yelpData';
 import HomePage from './Homepage';
 import JournalPage from './JournalPage';
-import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
       voyage: [],
       city: 'San Francisco',
       username: '',
-      voyages: []
+      voyages: [],
     };
 
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
@@ -34,29 +35,27 @@ class App extends React.Component {
     $.ajax({
       type: 'POST',
       url: '/search',
-      data: {'search': city},
+      data: { search: city },
       success: (cityInfo) => {
         this.setState({
-          photos: cityInfo
-        }, function() {
+          photos: cityInfo,
+        }, () => {
           this.props.history.push('/select');
-        })
+        });
       },
       error: (err) => {
         console.log('ERROR ', err);
-      }
-    })
+      },
+    });
   }
 
   autocomplete(changeCity) {
-    this.setState({ 
-      city: changeCity.target.value
+    this.setState({
+      city: changeCity.target.value,
     });
-    let autocomplete = new google.maps.places.Autocomplete(
-      (document.getElementById('autocomplete')), {
-        type: ['(cities)']
-      }
-    )
+    new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+      type: ['(cities)'],
+    });
   }
 
   handlePhotoClick(index) {
@@ -91,38 +90,38 @@ class App extends React.Component {
       data: { username, location: this.state.city, list: this.state.voyage },
       success: (voyages) => {
         this.setState({
-          voyages: JSON.parse(voyages)
-        }, function() {
+          voyages: JSON.parse(voyages),
+        }, () => {
           this.props.history.push('/voyages');
-        })
+        });
       },
       error: (err) => {
         console.log('ERROR ', err);
-      }
-    })
+      },
+    });
   }
 
   checkForUsername() {
     let { username } = this.state;
-    if(!this.state.username) {
+    if (!this.state.username) {
       username = prompt('Enter a username');
       this.setState({ username });
-    } 
+    }
     $.ajax({
       type: 'POST',
       url: '/usersVoyages',
       data: { username },
       success: (voyages) => {
         this.setState({
-          voyages: JSON.parse(voyages)
-        }, function() {
+          voyages: JSON.parse(voyages),
+        }, () => {
           this.props.history.push('/voyages');
-        })
+        });
       },
       error: (err) => {
         console.log('ERROR ', err);
-      }
-    })
+      },
+    });
   }
 
   render() {
@@ -184,5 +183,3 @@ App.propTypes = {
 };
 
 export default withRouter(App);
-
-

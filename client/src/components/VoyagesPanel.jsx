@@ -2,33 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
 
-function VoyagesPanel({voyages, handleVoyageClick}) {
+function VoyagesPanel({ voyages, handleVoyageClick }) {
   return (
     <div id="photo-panel">
       <Masonry
         className="photo-gallery"
         elementType="ul"
       >
-        {voyages.map((voyage, index) => {
-          return (
+        {voyages.map((voyage, index) => (
           <li
             className="voyage"
-            key={index}
+            key={voyage._id}
             onClick={() => handleVoyageClick(index)}
             role="menuitem"
-          > 
+          >
             <div>
-            <img
-              src={voyage.list[0].image_url}
-              alt={voyage.location}
-              width={Math.floor(document.getElementById('app').clientWidth / 4)}
-            />
+              <img
+                src={voyage.list[0].image_url}
+                alt={voyage.location}
+                width={Math.floor(document.getElementById('app').clientWidth / 4)}
+              />
             </div>
             <div className="voyage-name"> {voyage.location} </div>
 
-          </li> 
-        )}
-      )}
+          </li>
+        ))}
       </Masonry>
     </div>
   );

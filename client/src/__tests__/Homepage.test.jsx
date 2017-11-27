@@ -9,9 +9,10 @@ describe('HomePage', () => {
 
   test('should be selectable by class "homepage"', () => {
     const wrapper = shallow(<HomePage
-      city=''
+      city=""
       search={() => {}}
       autocomplete={() => {}}
+      book={() => {}}
     />);
 
     expect(wrapper.is('.homepage')).toBe(true);
@@ -19,7 +20,12 @@ describe('HomePage', () => {
 
   test('should call search when "Go!" is clicked', () => {
     const search = jest.fn();
-    const wrapper = shallow(<HomePage search={search} select />);
+    const wrapper = shallow(<HomePage
+      city=""
+      search={search}
+      autocomplete={() => {}}
+      book={() => {}}
+    />);
 
     expect(search).not.toHaveBeenCalled();
     wrapper.find('#citybutton').first().simulate('click');

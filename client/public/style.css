@@ -120,9 +120,13 @@ button#save-voyage {
   margin-top: 10%;
 }
 
+.homeImgContainer {
+  display: inline-block;
+  max-width: 33.33%;
+}
+
 .homeImg {
-  position: relative;
-  width: 33.33%;
+  width: 100%;
   height: 250px;
   background-position: 50% 50%;
   background-size: cover;
