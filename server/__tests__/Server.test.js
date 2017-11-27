@@ -30,4 +30,31 @@ describe('server', () => {
       done();
     });
   });
+
+  test('should respond to POST requests for / with a 201 status code', (done) => {
+    request('http://127.0.0.1:3000/', (error, response) => {
+      if (!error) {
+        expect(response.statusCode).toBe(201);
+      }
+      done();
+    });
+  });
+
+  test('should respond to POST requests for /search with a 201 status code', (done) => {
+    request('http://127.0.0.1:3000/', (error, response) => {
+      if (!error) {
+        expect(response.statusCode).toBe(201);
+      }
+      done();
+    });
+  });
+
+  test('should respond to GET requests for /wrongpath with a 404 status code', (done) => {
+    request('http://127.0.0.1:3000/', (error, response) => {
+      if (!error) {
+        expect(response.statusCode).toBe(404);
+      }
+      done();
+    });
+  });
 });
