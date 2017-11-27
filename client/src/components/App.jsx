@@ -32,6 +32,7 @@ class App extends React.Component {
   search() {
     const city = $('#autocomplete').val();
     this.setState({ city });
+
     $.ajax({
       type: 'POST',
       url: '/search',

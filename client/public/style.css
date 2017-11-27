@@ -1,7 +1,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background-color: black;
+  background-color: #10151e;
   font-family: Verdana, sans-serif;
 }
 
@@ -113,7 +113,10 @@ button#save-voyage {
   right: 10px;
   z-index: 2;
   height: 30px;
-  background: lightBlue;
+  background: #2c6de8;
+  border: none;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .homepage {
@@ -136,11 +139,21 @@ button#save-voyage {
   text-align: center;
 }
 
-input#autocomplete {
-  width: 50%;
-  height: 20px;
-  padding: 2px;
-  border-color: black;
-  border-width: 5px;
+input#citybutton{
+  height: 50px;
+  margin-left: 5px;
+  background: #2c6de8;
+  font-size: 20px;
+  border-radius: 3px;
+  border: none;
+  font-style: italic;
 }
 
+input#autocomplete {
+  width: 50%;
+  height: 50px;
+  border: none;
+  border-radius: 3px;
+  font-size: 22px;
+  padding-left: 5px;
+}
