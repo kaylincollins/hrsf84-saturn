@@ -29,8 +29,13 @@ class App extends React.Component {
     this.checkForUsername = this.checkForUsername.bind(this);
   }
 
-  search() {
-    const city = $('#autocomplete').val();
+  search(place) {
+    let city;
+    if (place !== undefined) {
+      city = place;
+    } else {
+      city = $('#autocomplete').val();
+    }
     this.setState({ city });
 
     $.ajax({
