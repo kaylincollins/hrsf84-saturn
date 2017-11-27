@@ -38,6 +38,18 @@ From within the root directory:
 npm install
 ```
 
+## Setting local variables
+
+-API:
+	-Sign up for Yelp Fusion API. In your terminal add the following variables with your information:
+		-export CLIENTID=Your-client-id
+		-export CLIENTSECRET=Your-client-secret
+
+-Database 
+	-Set your config variable to log in to your database
+		-for example, we used mLab and set a variable like this:
+		export <dbuser>=<password>:saturn@ds040877.mlab.com:40877/<dbname>
+
 ### Roadmap
 
 View the project roadmap [here](https://docs.google.com/document/d/1OO5z6kTTVBHrAS6XR9YJxTN1Wtyx_mXapDGT4LDZgmw/edit)
