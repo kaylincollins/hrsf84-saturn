@@ -25,8 +25,15 @@
 ## Requirements
 
 - Node 6.4.x
-- etc
-- etc
+- Mongoose
+- MongoDB
+- React-masonry
+- React-router
+- Webpack
+- Babel
+- Google API
+- Yelp API
+
 
 ## Development
 
